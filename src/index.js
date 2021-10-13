@@ -20,5 +20,6 @@ function getImage(term) {
 
 const button = document.querySelector('#test-button');
 button.addEventListener('click', () => {
-  weather.getWeather('Toronto', 'metric');
+  const result = weather.getWeather('Toronto', 'metric').then((response) => response);
+  getImage(result.keyword);
 });
