@@ -3,7 +3,7 @@ const apiKeyImage = 'ieAImKLCMr3MRyKct42s8BMVBEdSgL0A';
 
 //  parse giphy json for relevant data
 function processImage(response) {
-  console.log(response.data.images.original.url);
+  return response.data.images.original.url;
 }
 
 //  send giphy api request

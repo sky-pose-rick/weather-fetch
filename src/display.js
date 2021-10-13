@@ -1,4 +1,7 @@
 function showHome(content, callback) {
+  //  erase old content
+  content.innerText = '';
+
   //  form
   const form = document.createElement('form');
   content.appendChild(form);
@@ -48,11 +51,19 @@ function showHome(content, callback) {
 }
 
 function showLoad(content) {
-  console.log('loading');
+  //  erase old content
+  content.innerText = 'Now Loading...';
 }
 
-function showResults(content) {
-  console.log('loading');
+function showResults(content, source) {
+  //  erase old content
+  content.innerText = '';
+  console.log('image to load: ', source);
+
+  //    display the giphy result
+  const img = document.createElement('img');
+  content.appendChild(img);
+  img.setAttribute('src', source);
 }
 
 function showError(content) {
