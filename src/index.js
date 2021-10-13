@@ -1,7 +1,7 @@
 import openWeather from './weather';
 import giphy from './giphy';
+import display from './display';
 
-const button = document.querySelector('#test-button');
-button.addEventListener('click', () => {
-  openWeather.getWeather('Toronto', 'metric').then((weather) => giphy.getImage(weather.keyword));
-});
+const content = document.querySelector('#content');
+const submitCallback = (city, units) => openWeather.getWeather(city, units).then((weather) => giphy.getImage(weather.keyword));
+display.showHome(content, submitCallback);

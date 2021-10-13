@@ -8,7 +8,7 @@ function processWeather(response) {
   const { temp } = response.main;
   const weather = response.weather[0].main;
   const keyword = weather;
-  console.log(response);
+  //  console.log(response);
   console.log('Location: ', city);
   console.log('Country: ', country);
   console.log('Temperature: ', temp);
