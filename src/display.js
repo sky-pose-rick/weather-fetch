@@ -80,9 +80,10 @@ function showResults(domInputs, domOutputs, weather, sourcePromise) {
   domOutputs.appendChild(city);
   city.innerText = `${weather.city} ${emoji}`;
 
+  const degs = weather.units === 'metric' ? '°C' : '°F';
   const temp = document.createElement('div');
   domOutputs.appendChild(temp);
-  temp.innerText = weather.temp;
+  temp.innerText = weather.temp + degs;
 
   const conditions = document.createElement('div');
   domOutputs.appendChild(conditions);

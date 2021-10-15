@@ -2,16 +2,17 @@
 const apiKeyWeather = '8d838cab2623bf0e4ccf3c4d32eab7bb';
 
 //  parse open weather json for relevant data
-function processWeather(json) {
+function processWeather(json, units) {
   if (json.cod === '404') { throw new Error('City not found'); }
   const city = json.name;
   const { country } = json.sys;
   const { temp } = json.main;
   const weather = json.weather[0].main;
   const keyword = weather;
+  console.log(json);
 
   return {
-    city, country, temp, weather, keyword,
+    city, country, temp, weather, keyword, units,
   };
 }
 
@@ -26,7 +27,7 @@ async function requestWeather(location, units) {
 //  send a request then process the result
 async function getWeather(location, units) {
   const json = await requestWeather(location, units);
-  return processWeather(json);
+  return processWeather(json, units);
 }
 
 export default { getWeather };
