@@ -66,7 +66,7 @@ function showLoad(domInputs, domOutputs) {
 
   const loadingMessage = document.createElement('div');
   domOutputs.appendChild(loadingMessage);
-  loadingMessage.className = 'error-box';
+  loadingMessage.className = 'loading-box';
   loadingMessage.innerText = 'Now Loading...';
 }
 
