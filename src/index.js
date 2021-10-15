@@ -8,8 +8,10 @@ const submitCallback = (city, units) => {
   display.showLoad(domInputs, domOutputs);
   openWeather.getWeather(city, units).then((weather) => {
     giphy.getImage(weather.keyword).then((image) => {
-      display.showResults(domInputs, domOutputs, image);
+      display.showResults(domInputs, domOutputs, weather, image);
     });
+  }).catch((error) => {
+    console.log('failed to get weather');
   });
 };
 display.showHome(domInputs, domOutputs, submitCallback);

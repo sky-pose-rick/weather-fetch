@@ -1,3 +1,5 @@
+import countryCodeEmoji from 'country-code-emoji';
+
 function showHome(domInputs, domOutputs, callback) {
   //  erase old content
   domInputs.innerText = '';
@@ -55,10 +57,24 @@ function showLoad(domInputs, domOutputs) {
   domOutputs.innerText = 'Now Loading...';
 }
 
-function showResults(domInputs, domOutputs, source) {
+function showResults(domInputs, domOutputs, weather, source) {
   //  erase old content
   domOutputs.innerText = '';
   console.log('image to load: ', source);
+
+  //  display the weather
+  const emoji = countryCodeEmoji(weather.country);
+  const city = document.createElement('div');
+  domOutputs.appendChild(city);
+  city.innerText = `${weather.city} ${emoji}`;
+
+  const temp = document.createElement('div');
+  domOutputs.appendChild(temp);
+  temp.innerText = weather.temp;
+
+  const conditions = document.createElement('div');
+  domOutputs.appendChild(conditions);
+  conditions.innerText = weather.weather;
 
   //    display the giphy result
   const img = document.createElement('img');
