@@ -10,23 +10,31 @@ function showHome(domInputs, domOutputs, callback) {
   //    city input
   const cityLabel = document.createElement('label');
   form.appendChild(cityLabel);
-  cityLabel.innerText = 'City';
+  cityLabel.innerText = 'City: ';
   const cityInput = document.createElement('input');
   cityLabel.appendChild(cityInput);
   cityInput.setAttribute('name', 'city');
   cityInput.toggleAttribute('required');
-  //    unit input wrapper
-  const unitLabelWrapper = document.createElement('label');
-  form.appendChild(unitLabelWrapper);
-  unitLabelWrapper.innerText = 'Units';
+
+  //  unit wrapper
+  const unitWrapper = document.createElement('div');
+  form.appendChild(unitWrapper);
+  unitWrapper.className = 'unit-wrapper';
+
+  //    unit input description
+  const unitLabelDesc = document.createElement('label');
+  unitWrapper.appendChild(unitLabelDesc);
+  unitLabelDesc.innerText = 'Units: ';
 
   const createRadio = (label, value, group, checked) => {
     const unitLabel = document.createElement('label');
-    unitLabelWrapper.appendChild(unitLabel);
+    unitWrapper.appendChild(unitLabel);
     unitLabel.innerText = label;
+    unitLabel.style.setProperty('grid-column', '2/3');
+    unitLabel.className = 'radio-label';
+
     const unitInput = document.createElement('input');
     unitLabel.appendChild(unitInput);
-
     unitInput.setAttribute('type', 'radio');
     unitInput.setAttribute('name', group);
     unitInput.value = value;
