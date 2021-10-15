@@ -7,11 +7,13 @@ const domOutputs = document.querySelector('#dom-outputs');
 const submitCallback = (city, units) => {
   display.showLoad(domInputs, domOutputs);
   openWeather.getWeather(city, units).then((weather) => {
-    giphy.getImage(weather.keyword).then((image) => {
-      display.showResults(domInputs, domOutputs, weather, image);
-    });
-  }).catch((error) => {
-    console.log('failed to get weather');
-  });
+    console.log(weather);
+    const imgPromise = giphy.getImage(weather.keyword);
+    display.showResults(domInputs, domOutputs, weather, imgPromise);
+  });/* , (error) => {
+    console.log(error);
+    display.showError(domInputs, domOutputs);
+    error.defer();
+  }); */
 };
 display.showHome(domInputs, domOutputs, submitCallback);

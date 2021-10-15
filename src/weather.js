@@ -9,10 +9,10 @@ function processWeather(response) {
   const weather = response.weather[0].main;
   const keyword = weather;
   //  console.log(response);
-  console.log('Location: ', city);
+  /*  console.log('Location: ', city);
   console.log('Country: ', country);
   console.log('Temperature: ', temp);
-  console.log('Weather: ', weather);
+  console.log('Weather: ', weather);  */
   //    getImage(response.weather[0].main);
   return {
     city, country, temp, weather, keyword,
@@ -23,7 +23,7 @@ function processWeather(response) {
 async function requestWeather(location, units) {
   const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${units}&APPID=${apiKeyWeather}`, {
     mode: 'cors',
-  }).then((response) => response.json()).then((response) => response);
+  }).then((response) => response.json()).then((json) => json);
   return result;
 }
 

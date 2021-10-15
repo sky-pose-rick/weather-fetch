@@ -16,9 +16,9 @@ async function requestImage(term) {
 }
 
 //  send a request then process the result
-async function getImage(location, units) {
-  const response = await requestImage(location, units);
-  return processImage(response);
+async function getImage(term) {
+  const response = await requestImage(term);
+  return requestImage(response);
 }
 
 export default { getImage };

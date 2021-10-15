@@ -57,10 +57,9 @@ function showLoad(domInputs, domOutputs) {
   domOutputs.innerText = 'Now Loading...';
 }
 
-function showResults(domInputs, domOutputs, weather, source) {
+function showResults(domInputs, domOutputs, weather, sourcePromise) {
   //  erase old content
   domOutputs.innerText = '';
-  console.log('image to load: ', source);
 
   //  display the weather
   const emoji = countryCodeEmoji(weather.country);
@@ -77,13 +76,22 @@ function showResults(domInputs, domOutputs, weather, source) {
   conditions.innerText = weather.weather;
 
   //    display the giphy result
-  const img = document.createElement('img');
-  domOutputs.appendChild(img);
-  img.setAttribute('src', source);
+  sourcePromise.then((source) => {
+    console.log('image to load: ', source);
+    const img = document.createElement('img');
+    domOutputs.appendChild(img);
+    img.setAttribute('src', source);
+    img.setAttribute('alt', `Image of ${weather.weather}`);
+  });
 }
 
-function showError(domInputs, domOutputs) {
-  console.log('error');
+function showError(domInputs, domOutputs, searchTerm) {
+  //  erase old content
+  domOutputs.innerText = '';
+
+  const errorMessage = document.createElement('div');
+  domOutputs.appendChild(errorMessage);
+  errorMessage.innerText = 'Failed to find results. Please check your inputs and try again';
 }
 
 export default {
