@@ -1,10 +1,10 @@
-function showHome(content, callback) {
+function showHome(domInputs, domOutputs, callback) {
   //  erase old content
-  content.innerText = '';
+  domInputs.innerText = '';
 
   //  form
   const form = document.createElement('form');
-  content.appendChild(form);
+  domInputs.appendChild(form);
   //    city input
   const cityLabel = document.createElement('label');
   form.appendChild(cityLabel);
@@ -50,23 +50,23 @@ function showHome(content, callback) {
   });
 }
 
-function showLoad(content) {
+function showLoad(domInputs, domOutputs) {
   //  erase old content
-  content.innerText = 'Now Loading...';
+  domOutputs.innerText = 'Now Loading...';
 }
 
-function showResults(content, source) {
+function showResults(domInputs, domOutputs, source) {
   //  erase old content
-  content.innerText = '';
+  domOutputs.innerText = '';
   console.log('image to load: ', source);
 
   //    display the giphy result
   const img = document.createElement('img');
-  content.appendChild(img);
+  domOutputs.appendChild(img);
   img.setAttribute('src', source);
 }
 
-function showError(content) {
+function showError(domInputs, domOutputs) {
   console.log('error');
 }
 
