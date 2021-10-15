@@ -2,18 +2,13 @@
 const apiKeyWeather = '8d838cab2623bf0e4ccf3c4d32eab7bb';
 
 //  parse open weather json for relevant data
-function processWeather(response) {
-  const city = response.name;
-  const { country } = response.sys;
-  const { temp } = response.main;
-  const weather = response.weather[0].main;
+function processWeather(json) {
+  const city = json.name;
+  const { country } = json.sys;
+  const { temp } = json.main;
+  const weather = json.weather[0].main;
   const keyword = weather;
-  //  console.log(response);
-  /*  console.log('Location: ', city);
-  console.log('Country: ', country);
-  console.log('Temperature: ', temp);
-  console.log('Weather: ', weather);  */
-  //    getImage(response.weather[0].main);
+
   return {
     city, country, temp, weather, keyword,
   };
@@ -29,8 +24,8 @@ async function requestWeather(location, units) {
 
 //  send a request then process the result
 async function getWeather(location, units) {
-  const response = await requestWeather(location, units);
-  return processWeather(response);
+  const json = await requestWeather(location, units);
+  return processWeather(json);
 }
 
 export default { getWeather };

@@ -2,8 +2,8 @@
 const apiKeyImage = 'ieAImKLCMr3MRyKct42s8BMVBEdSgL0A';
 
 //  parse giphy json for relevant data
-function processImage(response) {
-  return response.data.images.original.url;
+function processImage(json) {
+  return json.data.images.original.url;
 }
 
 //  send giphy api request
@@ -11,14 +11,14 @@ function processImage(response) {
 async function requestImage(term) {
   const result = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${apiKeyImage}&s=${term}`, {
     mode: 'cors',
-  }).then((response) => response.json()).then((response) => response);
+  }).then((response) => response.json()).then((json) => json);
   return result;
 }
 
 //  send a request then process the result
 async function getImage(term) {
-  const response = await requestImage(term);
-  return requestImage(response);
+  const json = await requestImage(term);
+  return processImage(json);
 }
 
 export default { getImage };
