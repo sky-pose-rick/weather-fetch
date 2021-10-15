@@ -10,10 +10,8 @@ const submitCallback = (city, units) => {
     console.log(weather);
     const imgPromise = giphy.getImage(weather.keyword);
     display.showResults(domInputs, domOutputs, weather, imgPromise);
-  });/* , (error) => {
-    console.log(error);
+  }, (error) => {
     display.showError(domInputs, domOutputs);
-    error.defer();
-  }); */
+  });
 };
 display.showHome(domInputs, domOutputs, submitCallback);

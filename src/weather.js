@@ -3,6 +3,7 @@ const apiKeyWeather = '8d838cab2623bf0e4ccf3c4d32eab7bb';
 
 //  parse open weather json for relevant data
 function processWeather(json) {
+  if (json.cod === '404') { throw new Error('City not found'); }
   const city = json.name;
   const { country } = json.sys;
   const { temp } = json.main;
