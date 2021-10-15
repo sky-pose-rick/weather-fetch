@@ -21,7 +21,7 @@ function processWeather(response) {
 
 //  send open weather api request
 async function requestWeather(location, units) {
-  const result = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location}&units=${units}&APPID=${apiKeyWeather}`, {
+  const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${units}&APPID=${apiKeyWeather}`, {
     mode: 'cors',
   }).then((response) => response.json()).then((response) => response);
   return result;
