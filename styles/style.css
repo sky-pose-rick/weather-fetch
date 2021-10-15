@@ -1,3 +1,15 @@
+body {
+	background-color: gray;
+}
+
+#content {
+	border: 3px solid black;
+	margin: 10px 20% 10px 20%;
+	border-radius: 75px;
+	padding-bottom: 20px;
+	background-color: white;
+}
+
 h1 {
 	text-align: center;
 	font-size: 50px;
@@ -9,6 +21,22 @@ form {
 	width: max-content;
 }
 
+/* submit button is the only direct child input */
+form > input {
+	width: max-content;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	padding: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.unit-wrapper {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+}
+
 label{
     display: block;
     padding: 5px;
@@ -16,10 +44,12 @@ label{
 
 .loading-box{
     text-align: center;
+    background-color: blue;
 }
 
 .error-box{
     text-align: center;
+    background-color: red;
 }
 
 #dom-outputs {
@@ -29,4 +59,9 @@ label{
 #dom-outputs > div {
     text-align: center;
 	margin: 10px;
+}
+
+#dom-outputs > img {
+	margin: auto;
+	display: block;
 }
