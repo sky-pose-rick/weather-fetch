@@ -54,7 +54,12 @@ function showHome(domInputs, domOutputs, callback) {
 
 function showLoad(domInputs, domOutputs) {
   //  erase old content
-  domOutputs.innerText = 'Now Loading...';
+  domOutputs.innerText = '';
+
+  const loadingMessage = document.createElement('div');
+  domOutputs.appendChild(loadingMessage);
+  loadingMessage.className = 'error-box';
+  loadingMessage.innerText = 'Now Loading...';
 }
 
 function showResults(domInputs, domOutputs, weather, sourcePromise) {
@@ -91,6 +96,7 @@ function showError(domInputs, domOutputs, searchTerm) {
 
   const errorMessage = document.createElement('div');
   domOutputs.appendChild(errorMessage);
+  errorMessage.className = 'error-box';
   errorMessage.innerText = 'Failed to find results. Please check your inputs and try again';
 }
 
