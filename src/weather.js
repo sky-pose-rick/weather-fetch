@@ -16,10 +16,10 @@ function processWeather(json) {
 
 //  send open weather api request
 async function requestWeather(location, units) {
-  const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${units}&APPID=${apiKeyWeather}`, {
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${units}&APPID=${apiKeyWeather}`, {
     mode: 'cors',
-  }).then((response) => response.json()).then((json) => json);
-  return result;
+  });
+  return response.json();
 }
 
 //  send a request then process the result

@@ -9,10 +9,10 @@ function processImage(json) {
 //  send giphy api request
 //  send open weather api request
 async function requestImage(term) {
-  const result = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${apiKeyImage}&s=${term}`, {
+  const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${apiKeyImage}&s=${term}`, {
     mode: 'cors',
-  }).then((response) => response.json()).then((json) => json);
-  return result;
+  });
+  return response.json();
 }
 
 //  send a request then process the result
